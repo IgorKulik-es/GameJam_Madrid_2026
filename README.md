@@ -1,1 +1,2 @@
-# GameJam_Madrid_2026
+# Game project for Madrin In Game Hackathon
+Some description here. Also, hello!
