@@ -1,16 +1,17 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class BusController : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private SpriteRenderer body;
+    [SerializeField] private SpriteRenderer[] wheels;
+
+
+    private void Start()
     {
+        body.transform.DOLocalMoveY(0.5f, 0.5f).SetRelative().SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }
