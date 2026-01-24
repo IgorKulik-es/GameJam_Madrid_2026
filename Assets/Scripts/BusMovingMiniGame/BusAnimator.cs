@@ -18,8 +18,18 @@ namespace BusMovingMiniGame
 
         private void Start()
         {
-            body.transform.DOLocalMoveY(0.5f, 0.5f).SetRelative().SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
-        
+            body.transform.DOLocalMoveY(0.25f, 0.5f).SetRelative().SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
+            doors[0].transform.DOLocalMoveY(0.25f, 0.5f).SetRelative().SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
+            doors[1].transform.DOLocalMoveY(0.25f, 0.5f).SetRelative().SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
+            
+            //make do loop
+            wheels[0].transform.DOLocalMoveY(0.05f, 0.5f).SetRelative().SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
+            wheels[1].transform.DOLocalMoveY(0.05f, 0.5f).SetRelative().SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
+            
+            
+            wheels[0].transform.DORotate(new Vector3(0, 0, -60), 0.5f).SetEase(Ease.Linear).SetLoops(-1, LoopType.Incremental);
+            wheels[1].transform.DORotate(new Vector3(0, 0, -60), 0.5f).SetEase(Ease.Linear).SetLoops(-1, LoopType.Incremental);
+            
         }
 
         public void PlayOpenCloseAnimation(bool isOpen)
