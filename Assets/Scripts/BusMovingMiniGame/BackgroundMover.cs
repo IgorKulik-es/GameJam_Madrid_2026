@@ -13,7 +13,7 @@ namespace BusMovingMiniGame
         {
             foreach (var bg in backgrounds)
             {
-                var pos = bg.transform.position;
+                var pos = bg.transform.localPosition;
                 pos.x -= delta;
                 if (pos.x < boundaries.x)
                 {
@@ -21,7 +21,7 @@ namespace BusMovingMiniGame
                     pos.y = resetPosition.y;
                 }
             
-                bg.transform.position = pos;
+                bg.transform.localPosition = pos;
             }
         }
     
