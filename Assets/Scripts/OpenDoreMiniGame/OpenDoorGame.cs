@@ -1,10 +1,11 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace OpenDoreMiniGame
 {
-    public class OpenDoorGame : MonoBehaviour
+    public class OpenDoorGame : MonoBehaviour, IMinigame
     {
         [SerializeField] private Image[] combinationIcons; 
         [SerializeField] private Sprite[] allIcons;
@@ -14,6 +15,15 @@ namespace OpenDoreMiniGame
         private int[] _playerCombination = {-1, -1, -1};
         
         private int _currentIconIndex = 0;
+        
+        public event Action<bool> OnCompletedCorrectly;
+        
+        
+        public void StartMinigame()
+        {
+            gameObject.SetActive(true);
+        }
+        
         
         public void OnKeyButtonPressed(int key)
         {
@@ -35,25 +45,28 @@ namespace OpenDoreMiniGame
 
         private void CheckCombination()
         {
+            bool isCorrect = false;
             for (int i = 0; i < 3; i++)
             {
                 if (_playerCombination[i] != _combination[i])
                 {
+                    isCorrect = true;
                     PlayWrongAnimation();
-                    return;
+                    break;
                 }
             }
             
             PlayCorrectAnimation();
             ResetCombination();
+            OnCompletedCorrectly?.Invoke(isCorrect);
+            DOVirtual.DelayedCall(1, () => {gameObject.SetActive(false); });
         }
         
         private void PlayCorrectAnimation()
         {
             DOTween.Sequence()
-            .Append(background.DOColor(new Color(255,0,0,0.5f), 0.5f))
+            .Append(background.DOColor(new Color(0,255,0.5f), 0.5f))
             .Append(background.DOColor(new Color(0,0,0,0), 0.5f));
-            
         }
         
         private void PlayWrongAnimation()
@@ -62,6 +75,5 @@ namespace OpenDoreMiniGame
             .Append(background.DOColor(new Color(255,0,0,0.5f), 0.5f))
             .Append(background.DOColor(new Color(0,0,0,0), 0.5f));
         }
-        
     }
 }
