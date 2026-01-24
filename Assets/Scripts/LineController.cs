@@ -79,7 +79,7 @@ public class PassengerQueue: MonoBehaviour
     public PassengerType GetFirstInQueue()
     {
         if (queue.Count > 0)
-            return queue[0].PType;
+            return queue[0].pType;
         return PassengerType.VISION;
     }
     private Vector2 CalcPosition(int index)

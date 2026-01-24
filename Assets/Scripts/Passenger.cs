@@ -15,11 +15,11 @@ public enum PassengerType
 public class Passenger: MonoBehaviour
 {
     public int queuePosition;
-    public PassengerType PType { get; private set;}
+    public PassengerType pType;
 
     public Passenger (PassengerType pType)
     {
-        PType = pType;
+        this.pType = pType;
     }
     public void MoveInQueue()
     {
