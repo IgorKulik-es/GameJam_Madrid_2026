@@ -3676,7 +3676,7 @@ MonoBehaviour:
   lineController: {fileID: 1774745234}
   rampDoorMiniGame: {fileID: 1864965924}
   playerInputGame: {fileID: 1883113220}
-  soundGame: {fileID: 0}
+  soundGame: {fileID: 91445429}
 --- !u!1 &543868845
 GameObject:
   m_ObjectHideFlags: 0
