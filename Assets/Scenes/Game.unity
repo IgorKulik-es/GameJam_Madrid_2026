@@ -1569,6 +1569,7 @@ MonoBehaviour:
   backgroundMover: {fileID: 1961438707}
   stoppingZone: {fileID: 758931338}
   busAnimator: {fileID: 104451530}
+  station: {fileID: 758931335}
 --- !u!1 &118585626
 GameObject:
   m_ObjectHideFlags: 0

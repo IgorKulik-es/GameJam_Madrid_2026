@@ -39,5 +39,14 @@ namespace BusMovingMiniGame
             doors[0].transform.DOMoveX(isOpen? leftDoorOpenPos : leftDoorClosePos, 0.5f).SetRelative().SetEase(Ease.OutSine);
             doors[1].transform.DOMoveX(isOpen? rightDoorOpenPos : rightDoorClosePos, 0.5f).SetRelative().SetEase(Ease.OutSine); 
         }
+        
+        public void StopAnimation()
+        {
+            body.transform.DOKill();
+            doors[0].transform.DOKill();
+            doors[1].transform.DOKill();
+            wheels[0].transform.DOKill();
+            wheels[1].transform.DOKill();
+        }
     }
 }
