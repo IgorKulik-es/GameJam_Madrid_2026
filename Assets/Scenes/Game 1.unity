@@ -5030,7 +5030,7 @@ Transform:
   m_GameObject: {fileID: 1028983552}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.7, y: -2.01, z: 0}
+  m_LocalPosition: {x: 1.94, y: -1.49, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7766,7 +7766,7 @@ MonoBehaviour:
   queueGap: 2
   queueSize: 4
   door: {fileID: 1028983553}
-  timeMove: 1
+  timeMove: 0.6
 --- !u!4 &1774745235
 Transform:
   m_ObjectHideFlags: 0
@@ -7776,7 +7776,7 @@ Transform:
   m_GameObject: {fileID: 1774745233}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.09, y: -3.79, z: 0}
+  m_LocalPosition: {x: -1.21, y: -3.07, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
