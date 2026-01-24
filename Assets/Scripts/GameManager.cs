@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private OpenDoorGame openDoorGame;
     [SerializeField] private PassengerGame passengerGame;
     [SerializeField] private UIStatsPanel uiStatsPanel;
+    [SerializeField] private AudioManager audioManager;
     
     
     public int totalTime = 60 * 3;
@@ -41,6 +42,7 @@ public class GameManager : MonoBehaviour
         busController.StartMinigame();
         busController.OnCompletedCorrectly += b =>
         {
+            PlaySoundGameSuccess(b);
             busController.GetBusAnimator().PlayOpenCloseAnimation(true);
             DOVirtual.DelayedCall(1, StartOpenDoorMiniGame);
         };
@@ -51,20 +53,29 @@ public class GameManager : MonoBehaviour
         openDoorGame.StartMinigame();
         openDoorGame.OnCompletedCorrectly += b =>
         {
+            PlaySoundGameSuccess(b);
             DOVirtual.DelayedCall(1,()=>busController.GetBusAnimator().PlayOpenCloseAnimation(true));
             DOVirtual.DelayedCall(2, StartPassengerMiniGame);
         };
     }
-
 
     private void StartPassengerMiniGame()
     {
         passengerGame.StartMinigame();
         passengerGame.OnCompletedCorrectly += b =>
         {
+            PlaySoundGameSuccess(b);
             DOVirtual.DelayedCall(1, () => busController.GetBusAnimator().PlayOpenCloseAnimation(false));
             DOVirtual.DelayedCall(2, StartBusMovingMiniGame);
         };
+    }
+
+    private void PlaySoundGameSuccess(bool result)
+    {
+        if (result)
+            audioManager.OneShot(AudioEffects.SUCCESS);
+        else
+            audioManager.OneShot(AudioEffects.FAILURE);
     }
     
 }

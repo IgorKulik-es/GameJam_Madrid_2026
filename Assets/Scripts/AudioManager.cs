@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public enum AudioEffects
 {
@@ -8,6 +9,7 @@ public enum AudioEffects
     CLICK,
     ENGINE_START,
     DRIVING,
+    DOOR,
     ANNOUNCEMENT,
     NUM_EFFECTS
 };
@@ -16,16 +18,19 @@ public enum AudioEffects
 public class AudioManager: MonoBehaviour
 {
     [SerializeField] private AudioClip mainTheme;
+    [SerializeField] private AudioClip gameplayTheme;
     [SerializeField] private AudioClip success;
     [SerializeField] private AudioClip failure;
     [SerializeField] private AudioClip click;
     [SerializeField] private AudioClip engingeStart;
     [SerializeField] private AudioClip driving;
+    [SerializeField] private AudioClip doors;
+
     [SerializeField] private AudioClip[] stopAnnouncements;
     
     [SerializeField] private AudioSource source;
     public static AudioManager instance;
-    public InputAction[] input;
+    public InputAction input;
     
     void Awake()
     {
@@ -38,16 +43,40 @@ public class AudioManager: MonoBehaviour
         {
             Destroy(gameObject);
         }
+        source.loop = true;
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
     void Start()
     {
-        source.clip =  mainTheme;
-        source.loop = true;
-        source.Play();
     }
 
     void Update()
     {
+        if (Keyboard.current.anyKey.wasPressedThisFrame)
+            OneShot(AudioEffects.CLICK);
+        if (Mouse.current.leftButton.wasPressedThisFrame)
+            OneShot(AudioEffects.CLICK);
+    }
+    
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        switch (scene.buildIndex)
+        {
+            case 0:
+            {
+                source.clip = mainTheme;
+                break;
+            }
+            case 1:
+            {
+                source.clip = gameplayTheme;
+                OneShot(AudioEffects.ENGINE_START);
+                break;
+            }
+            default:
+                break;
+        }
+        source.Play();
     }
 
     public void OneShot(AudioEffects effect)
@@ -68,6 +97,9 @@ public class AudioManager: MonoBehaviour
                 break;
             case AudioEffects.DRIVING:
                 source.PlayOneShot(driving);
+                break;
+            case AudioEffects.DOOR:
+                source.PlayOneShot(doors);
                 break;
             case AudioEffects.ANNOUNCEMENT:
             {
