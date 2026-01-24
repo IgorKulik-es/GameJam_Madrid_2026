@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public enum AudioEffects
 {
@@ -12,7 +13,7 @@ public enum AudioEffects
 };
 
 [RequireComponent(typeof(AudioSource))]
-public class AudioManager: Monobehaviour
+public class AudioManager: MonoBehaviour
 {
     [SerializeField] private AudioClip mainTheme;
     [SerializeField] private AudioClip success;
