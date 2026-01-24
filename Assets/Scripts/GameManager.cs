@@ -1,6 +1,7 @@
 using System;
 using BusMovingMiniGame;
 using DG.Tweening;
+using InputGame;
 using OpenDoreMiniGame;
 using PassengerMiniGame;
 using UnityEngine;
@@ -55,31 +56,5 @@ public class GameManager : MonoBehaviour
             
         };
     }
-
-    private void Update()
-    {
-
-        // if (Keyboard.current.spaceKey.wasPressedThisFrame)
-        // {
-        //     _isPaused = !_isPaused;
-        //     spellChecker.SetEnableChecking(_isPaused);
-        //     Debug.Log("IsPaused: " + _isPaused);
-        // }
-    }
-
-
-    private void OnInputEnded(bool isCorrect)
-    {
-        spellChecker.SetEnableChecking(false);
-    }
-
-    private void OnEnable()
-    {
-        //SpellChecker.OnWordEnded += OnInputEnded;
-    }
-
-    private void OnDisable()
-    {
-        //SpellChecker.OnWordEnded -= OnInputEnded;
-    }
+    
 }
