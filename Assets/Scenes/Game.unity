@@ -6457,8 +6457,8 @@ MonoBehaviour:
   success: {fileID: 8300000, guid: a8255cbea3dee7140b81925d9a6320fe, type: 3}
   failure: {fileID: 8300000, guid: 30d9c4f7bc0948446b4c9eadcf8c75e4, type: 3}
   click: {fileID: 8300000, guid: ec337d091a8a0414ebe0f91f5c212fd9, type: 3}
-  engingeStart: {fileID: 8300000, guid: d00991068f22e094baa62bfae15ea425, type: 3}
-  driving: {fileID: 8300000, guid: 34856b3f868f9004faea97a01f422438, type: 3}
+  engingeStart: {fileID: 0}
+  driving: {fileID: 0}
   doors: {fileID: 8300000, guid: 0770df909bdb808458ad91e7a650b243, type: 3}
   stopAnnouncements:
   - {fileID: 8300000, guid: f2774c29c112a0644ba64d238a62eeb7, type: 3}
@@ -9039,7 +9039,7 @@ Transform:
   m_GameObject: {fileID: 1774745233}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.09, y: -3.79, z: 0}
+  m_LocalPosition: {x: 0.05, y: -3.47, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
