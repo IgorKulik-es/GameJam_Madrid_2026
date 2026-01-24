@@ -20,7 +20,7 @@ namespace DoorMiniGame
         {
             _isActive = true;
             gameObject.SetActive(true);
-            _tween = ramp.transform.DOMoveY(rampYEndPosition, 2).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
+            _tween = ramp.transform.DOLocalMoveY(rampYEndPosition, 1.5f).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
         }
 
         private void Update()
