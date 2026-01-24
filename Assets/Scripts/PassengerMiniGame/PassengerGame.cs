@@ -2,6 +2,7 @@ using System;
 using DG.Tweening;
 using DoorMiniGame;
 using InputGame;
+using SoundMiniGame;
 using UnityEngine;
 
 namespace PassengerMiniGame
@@ -11,6 +12,8 @@ namespace PassengerMiniGame
         [SerializeField] private LineController lineController;
         [SerializeField] private RampDoorMiniGame rampDoorMiniGame;
         [SerializeField] private PlayerInputGame playerInputGame;
+        [SerializeField] private SoundGame soundGame;
+        
         public event Action<bool> OnCompletedCorrectly;
 
         public void OnButtonPassengerClicked(int i)
@@ -58,24 +61,25 @@ namespace PassengerMiniGame
             {
                 case PassengerType.MOBILITY:
                     rampDoorMiniGame.StartMinigame();
-                    rampDoorMiniGame.OnCompletedCorrectly += (isSuccess) =>
-                    {
-                        DOVirtual.DelayedCall(1, () =>
-                        {
-                            lineController.PopQueue();
-                        });
-                    };
+                    rampDoorMiniGame.OnCompletedCorrectly += NextPassenger;
                     break;
                 case PassengerType.VISION:
                     playerInputGame.StartMinigame();
-                    playerInputGame.OnCompletedCorrectly += (isSuccess) =>
-                    {
-                        DOVirtual.DelayedCall(1, () =>
-                        {
-                            lineController.PopQueue();
-                        });
-                    };
+                    playerInputGame.OnCompletedCorrectly += NextPassenger;
                     break;
+                
+                case PassengerType.SOUND_SENSITIVE:
+                    soundGame.StartMinigame();
+                    soundGame.SetGoal(SoundGame.SoundFor.Low);
+                    soundGame.OnCompletedCorrectly += NextPassenger;
+                    break;
+                
+                case PassengerType.HEARING_BAD:
+                    soundGame.StartMinigame();
+                    soundGame.SetGoal(SoundGame.SoundFor.High);
+                    soundGame.OnCompletedCorrectly += NextPassenger;
+                    break;
+                
                 default:
                     DOVirtual.DelayedCall(1, () =>
                     {
@@ -84,6 +88,15 @@ namespace PassengerMiniGame
                    
                     break;
             }
+        }
+
+        private void NextPassenger(bool isSuccess)
+        {
+            DOVirtual.DelayedCall(1, () =>
+            {
+                lineController.PopQueue();
+            });
+          
         }
    
     }

@@ -1,11 +1,10 @@
-using System;
 using BusMovingMiniGame;
 using DG.Tweening;
 using InputGame;
 using OpenDoreMiniGame;
 using PassengerMiniGame;
+using SoundMiniGame;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,13 +15,24 @@ public class GameManager : MonoBehaviour
     [SerializeField] private UIStatsPanel uiStatsPanel;
     
     
+    public int totalTime = 60 * 3;
+    
     private bool _isPaused = false;
+
+    
+    private int _timer; 
 
 
     private void Start()
     {
+        _timer = totalTime;
        StartBusMovingMiniGame();
        
+       DOVirtual.DelayedCall(1, () =>
+       { 
+           _timer--;
+          uiStatsPanel.UpdateTimerText(_timer);
+       }).SetLoops(totalTime);
     }
 
 
@@ -31,9 +41,8 @@ public class GameManager : MonoBehaviour
         busController.StartMinigame();
         busController.OnCompletedCorrectly += b =>
         {
-            
-            
-            StartOpenDoorMiniGame();
+            busController.GetBusAnimator().PlayOpenCloseAnimation(true);
+            DOVirtual.DelayedCall(1, StartOpenDoorMiniGame);
         };
     }
 
@@ -53,7 +62,8 @@ public class GameManager : MonoBehaviour
         passengerGame.StartMinigame();
         passengerGame.OnCompletedCorrectly += b =>
         {
-            
+            DOVirtual.DelayedCall(1, () => busController.GetBusAnimator().PlayOpenCloseAnimation(false));
+            DOVirtual.DelayedCall(2, StartBusMovingMiniGame);
         };
     }
     
