@@ -104,3 +104,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f69dbf85b1233804d9e2273bc73f70ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Passenger
+  queuePosition: 0

@@ -441,6 +441,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 566b218dba6474823a1a7b46fe50be2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BusController
+  body: {fileID: 0}
+  wheels: []
 --- !u!1 &208460567
 GameObject:
   m_ObjectHideFlags: 0
@@ -863,7 +865,7 @@ MonoBehaviour:
   - {fileID: 2448976028095729637, guid: 4433d42573d79664dbb1e484cb8a3b61, type: 3}
   - {fileID: 6359575266836035966, guid: e5a12c9e90faad74db127fb38ae26953, type: 3}
   - {fileID: 8313741810797059445, guid: ef3151a52cc38074b85321087bf8bdf6, type: 3}
-  queueGap: 1
+  queueGap: 2
   queueSize: 4
   door: {fileID: 104451529}
   timeMove: 1
@@ -979,6 +981,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainCharacter
   speed: 5
+  rb: {fileID: 0}
+  moveAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 0bba7241-fa1c-4196-b4bf-151050d8fcdb
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  moveInput: {x: 0, y: 0}
 --- !u!212 &1340521177
 SpriteRenderer:
   serializedVersion: 2
@@ -1147,6 +1160,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BackgroundMovment
   speed: 0.5
+  accelerationSpeed: 0.05
+  decelerationSpeed: 0.05
+  maxAcceleration: 1000
+  minDeceleration: 0
+  backgroundMover: {fileID: 0}
+  stoppingZone: {fileID: 0}
 --- !u!212 &1503287800
 SpriteRenderer:
   serializedVersion: 2
