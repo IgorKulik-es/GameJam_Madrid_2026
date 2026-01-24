@@ -8,6 +8,7 @@ namespace SoundMiniGame
     public class SoundGame : MonoBehaviour, IMinigame
     {
         [SerializeField] private Slider slider;
+        [SerializeField] private AudioManager audioManager;
         public float minSuccessValue = 0.25f;
         public float maxSuccessValue = 0.75f;
         
@@ -35,7 +36,7 @@ namespace SoundMiniGame
            {
                OnCompletedCorrectly?.Invoke(value > maxSuccessValue);
            }
-           
+           audioManager.OneShot(AudioEffects.ANNOUNCEMENT);
            DOVirtual.DelayedCall(1, () => gameObject.SetActive(false));
         }
 

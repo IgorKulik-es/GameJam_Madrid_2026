@@ -1225,6 +1225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundMiniGame.SoundGame
   slider: {fileID: 2106873589}
+  audioManager: {fileID: 1425840856}
   minSuccessValue: 0.5
   maxSuccessValue: 1
 --- !u!1 &104451528
