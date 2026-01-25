@@ -81,8 +81,12 @@ namespace InputGame
                     return false;
                 }
             }
-
             return true;
+        }
+
+        public void SetCorrectWord(string correctWord_)
+        {
+            this.correctWord = correctWord_;
         }
     
     }

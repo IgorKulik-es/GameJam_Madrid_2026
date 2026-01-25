@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
@@ -18,7 +19,6 @@ namespace PassengerMiniGame
         private GameObject nextPassengerObj;
         private Passenger  nextPassenger;
         private InputAction jumpAction;
-        private bool isQueueMoving = false;
         private float lastMoveTime = 0;
 
 
@@ -52,16 +52,19 @@ namespace PassengerMiniGame
 
         public void PopQueue()
         {
-            isQueueMoving = true;
             lastMoveTime = Time.timeSinceLevelLoad;
             queueLength--;
             queue[0].MoveToPosition(door.position, timeMove, true);
             queue.RemoveAt(0);
-            foreach (Passenger passenger in queue)
+            DOVirtual.DelayedCall(timeMove, () =>
             {
-                passenger.MoveInQueue();
-                passenger.MoveToPosition(CalcPosition(passenger.queuePosition), timeMove, false);
-            }
+                foreach (Passenger passenger in queue)
+                {
+                    passenger.MoveInQueue();
+                    passenger.MoveToPosition(CalcPosition(passenger.queuePosition), timeMove, false);
+                }
+            }, false);
+
         }
 
         public PassengerType GetFirstInQueue()
@@ -78,7 +81,6 @@ namespace PassengerMiniGame
             startPosition = transform.position;
             queueLength = 0;
             FormQueue(queueSize);
-            PopQueue();
         }
         
         private Vector2 CalcPosition(int index)

@@ -42,7 +42,6 @@ public class GameManager : MonoBehaviour
         busController.StartMinigame();
         busController.OnCompletedCorrectly += b =>
         {
-            PlaySoundGameSuccess(b);
             busController.GetBusAnimator().PlayOpenCloseAnimation(true);
             DOVirtual.DelayedCall(1, StartPassengerMiniGame);
         };

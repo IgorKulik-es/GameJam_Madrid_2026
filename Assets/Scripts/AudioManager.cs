@@ -74,6 +74,7 @@ public class AudioManager: MonoBehaviour
                 break;
             }
             default:
+                source.clip = gameplayTheme;
                 break;
         }
         source.Play();

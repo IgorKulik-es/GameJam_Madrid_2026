@@ -50,7 +50,6 @@ namespace PassengerMiniGame
         private void InitGameLoop()
         {
             PassengerType type = lineController.GetFirstInQueue();
-            
         }
 
 
