@@ -15,7 +15,7 @@ namespace BusMovingMiniGame
             {
                 var pos = bg.transform.localPosition;
                 pos.x -= delta;
-                if (pos.x < boundaries.x)
+                if (pos.x <= boundaries.x)
                 {
                     pos.x = resetPosition.x;
                     pos.y = resetPosition.y;

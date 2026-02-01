@@ -16,7 +16,6 @@ namespace BusMovingMiniGame
         [SerializeField] private BackgroundMover backgroundMover;
         [SerializeField] private StoppingZone stoppingZone;
         [SerializeField] private BusAnimator busAnimator;
-        [SerializeField] private GameObject station;
     
         public event Action<bool> OnCompletedCorrectly;
     
@@ -60,7 +59,6 @@ namespace BusMovingMiniGame
             {
                 bool isCorrectStopping = stoppingZone.CheckIfPlayerIsInStoppingZone(transform.position.x);
                 OnCompletedCorrectly?.Invoke(isCorrectStopping);
-                station.gameObject.SetActive(false);
                 busAnimator.StopAnimation();
                 _isActive = false;
             }
