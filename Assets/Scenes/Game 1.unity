@@ -1470,8 +1470,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BusController
   speed: 0.5
-  accelerationSpeed: 0.05
-  decelerationSpeed: 0.08
+  accelerationSpeed: 0.2
+  decelerationSpeed: 0.3
   maxAcceleration: 100
   minDeceleration: 0
   backgroundMover: {fileID: 1961438707}
@@ -8296,7 +8296,12 @@ MonoBehaviour:
   inputText: {fileID: 9418690}
   inputPanel: {fileID: 1179561294}
   audioManager: {fileID: 1147178184}
-  panels: []
+  panels:
+  - {fileID: 798458751}
+  - {fileID: 167810896}
+  - {fileID: 1580808809}
+  - {fileID: 16843696}
+  - {fileID: 1637485269}
   button: {fileID: 939979885}
   _spellChecker: {fileID: 1883113221}
 --- !u!1 &1622378940

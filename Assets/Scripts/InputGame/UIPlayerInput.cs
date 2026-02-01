@@ -25,7 +25,9 @@ namespace InputGame
         public void StartMinigame()
         {
             int i = Random.Range(0, panels.Length);
-            _spellChecker.SetCorrectWord(panels[i].GetComponentInChildren<Text>().text);
+            Debug.Log(panels[i].GetComponentInChildren<TextMeshProUGUI>().text);
+            _spellChecker.SetCorrectWord(panels[i].GetComponentInChildren<TextMeshProUGUI>().text);
+            Debug.Log(panels[i].GetComponentInChildren<Image>().color);
             button.color = panels[i].GetComponentInChildren<Image>().color;
            gameObject.SetActive(true);
         }
